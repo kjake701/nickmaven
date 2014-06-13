@@ -17,7 +17,7 @@
 
     <resources>
       <resource>
-        <directory>src/java</directory>
+        <directory>src/main/java/resources</directory>
         <includes>
           <include>**/*.xml</include>
         </includes>
