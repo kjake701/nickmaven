@@ -13,7 +13,17 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
-  <build>
+<build>
+
+    <resources>
+      <resource>
+        <directory>src/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+    </resources>
+	
  <plugins>
   <plugin>
     <artifactId>maven-assembly-plugin</artifactId>
@@ -26,9 +36,6 @@
       </execution>
     </executions>
     <configuration>
-	  <descriptors>
-	    <descriptor>src/main/java/log4j2.xml</descriptor>
-	  </descriptors>
       <descriptorRefs>
         <descriptorRef>jar-with-dependencies</descriptorRef>
       </descriptorRefs>
