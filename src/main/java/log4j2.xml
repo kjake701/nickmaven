@@ -17,7 +17,7 @@
   </Appenders>
   <Loggers>
 	<Logger name="nick.main.Logging" level="error" additivity="false">
-      <AppenderRef ref="Console"/>
+      <appender-ref ref="Console"/>
 	  <appender-ref ref="RollingFile"/>
     </Logger>
     <Root level="info">
