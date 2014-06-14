@@ -57,7 +57,7 @@ public class NickMaker extends JFrame {
 	 */
 	private static final long serialVersionUID = -7277652200588032482L;
 	
-	private String version = "0.9.5";
+	public String version = "1.1";
 
 	static final Logger logger = LogManager.getLogger(NickMaker.class.getName());
     
@@ -100,7 +100,7 @@ public class NickMaker extends JFrame {
     public static JTextArea Console2;
     protected JTextField sPrice, bPrice, nameField;
     protected Rectangle rsPrice, rbPrice, rnameField;
-    protected JButton button0, button1, copy, cut, controls, close, save, load;
+    protected JButton button0, button1, copy, cut, controls, close, save, load, check, showFullConsole;
 	@SuppressWarnings("rawtypes")
 	protected JComboBox ecolors, eformats, loadFile;
 	protected ImageIcon icon1 = new ImageIcon("backFinal.jpg"); 
@@ -137,6 +137,34 @@ public class NickMaker extends JFrame {
 	        
 	}
 	
+	public boolean hasColorCode(boolean hasColorCode){
+		
+		for(int i = 0; i < EssentialsCOL.length; i++){
+			if(textArea.getText().contains(EssentialsCOL[i])){
+				hasColorCode = true;
+				l.logInfoToConsole("Contains color code id: " + EssentialsCOL[i]);
+			} else {
+				l.logInfoToConsole("Has no color code");
+			}
+		}
+		
+		return hasColorCode;
+	}
+	
+	public boolean hasFormatCode(boolean hasFormatCode){
+		
+		for(int i = 0; i < EssentialsFOR.length; i++){
+			if(textArea.getText().contains(EssentialsFOR[i])){
+				hasFormatCode = true;
+				l.logInfoToConsole("Contains color code id: " + EssentialsFOR[i]);
+			} else {
+				l.logInfoToConsole("Has no format code");
+			}
+		}
+		
+		return hasFormatCode;
+		
+	}
 	
 	public void replaceStringWithColor(String text){
 		
@@ -210,6 +238,10 @@ public class NickMaker extends JFrame {
         loadText.setBounds(115, 435, 95, 20);
         panel.add(loadText);
         
+        check = new JButton("Check [Debug]");
+        check.setBounds(110, 420, 110, 20);
+        panel.add(check);
+        
         
         if(list.length <= 0){
         	loadFile = new JComboBox();
@@ -226,6 +258,10 @@ public class NickMaker extends JFrame {
         versions = new JLabel("Version: " + version);
         versions.setBounds(05, 01, 70, 20);
         panel.add(versions);
+        
+        showFullConsole = new JButton("Show full console");
+        showFullConsole.setBounds(50, 370, 95, 20);
+        panel.add(showFullConsole);
         
 	}
 	
@@ -928,6 +964,27 @@ public class NickMaker extends JFrame {
             
         });
         
+        check.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	boolean hasColor = false;
+            	boolean hasFormat = false;
+            	
+            	hasColorCode(hasColor);
+            	hasFormatCode(hasFormat);
+            	
+            	l.logInfoToConsole("hasColor = " + String.valueOf(hasColor));
+            	l.logInfoToConsole("hasFormat = " + String.valueOf(hasFormat));
+            	l.updateConsole();
+            }
+            
+        });
+        
+        showFullConsole.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	new FullConsole(1);
+            }
+            
+        });
         
 	}
   }
