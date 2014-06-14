@@ -11,7 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 
-public class FullConsole extends JFrame {
+public class FullConsole extends JFrame implements Commons {
+	
 	
 	/**
 	 * 
@@ -40,7 +41,7 @@ public class FullConsole extends JFrame {
             init();
             logic();
             l.logInfoToConsole("Opening Full Console");
-            l.logInfoToConsole("serialVersionUID: " + serialVersionUID + " Name: Nick Name Maker " + "Class: " + this.getClass() + " Version: " + "1.1");
+            l.logInfoToConsole("serialVersionUID: " + serialVersionUID + " Name: Nick Name Maker " + "Class: " + this.getClass() + " Version: " + version);
             repaint();
             l.updateConsole();
         }

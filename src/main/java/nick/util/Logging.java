@@ -1,6 +1,5 @@
 package nick.util;
 
-import java.awt.Frame;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,8 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-
-import nick.main.Nick;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,7 +20,6 @@ public class Logging {
 	static final Logger logger = LogManager.getLogger(Logging.class.getName());
 	String directoryString = ("crash-logs/");
 	String file = ("crash-logs/crashlog" + "[" + crashLogID + "]" + ".txt");
-	private String fileexistsexception;
 	
 	String[] logDataArray;
 	ArrayList<String> logDataArrayList = new ArrayList<String>();
