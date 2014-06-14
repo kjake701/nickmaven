@@ -6,7 +6,6 @@ public class Nick {
 	
 	public static void main(String[] args) {
 			new NickMaker(0);
-		
 	}
 
 }
