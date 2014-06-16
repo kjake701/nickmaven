@@ -48,7 +48,7 @@ public class NickMaker extends JFrame implements Commons {
     protected int selectionId;
 	
     //Colors Array
-    Color[] colorList = new Color[15];
+    Color[] colorList = new Color[16];
     
     //Colors (Essentials)
     private String[] EssentialsCOL = {"&0", "&1", "&2", "&3", "&4", "&5", "&6", "&7", "&8",
@@ -79,7 +79,7 @@ public class NickMaker extends JFrame implements Commons {
 	@SuppressWarnings("rawtypes")
 	protected JComboBox ecolors, eformats, loadFile;
 	protected ImageIcon icon1 = new ImageIcon("backFinal.jpg"); 
-    protected String fileexistsexception;
+    protected String fileexistsexception, textAreaText;
 
 	//Programs
 	
@@ -110,6 +110,20 @@ public class NickMaker extends JFrame implements Commons {
 	        frame.setLayout(null);
 	        
 	        
+	}
+	
+	public void colorizeTextArea(String text){
+		String text2;
+		for(int i = 0; i < 16; i++){
+			if(text.contains(EssentialsCOL[i])){
+				textArea.setForeground(colorList[i]);
+			}
+		}
+	}
+	
+	public String getTextAreaText(String text){
+		text = textArea.getText();
+		return textAreaText = text;
 	}
 	
 	public boolean hasColorCode(boolean hasColorCode){
@@ -256,7 +270,7 @@ public class NickMaker extends JFrame implements Commons {
 		colorList[12] = Color.decode("#FF5555");
 		colorList[13] = Color.decode("#FF55FF");
 		colorList[14] = Color.decode("#FFFF55");
-		colorList[14] = Color.decode("#FFFFFF");
+		colorList[15] = Color.decode("#FFFFFF");
 	}
 	
 	public void placeAtCaret(){
@@ -946,6 +960,8 @@ public class NickMaker extends JFrame implements Commons {
             	
             	hasColorCode(hasColor);
             	hasFormatCode(hasFormat);
+            	getTextAreaText(textArea.getText());
+            	colorizeTextArea(textAreaText);
             	
             	l.logInfoToConsole("hasColor = " + String.valueOf(hasColor));
             	l.logInfoToConsole("hasFormat = " + String.valueOf(hasFormat));
